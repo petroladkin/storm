@@ -8,14 +8,36 @@
 <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
 <h5><i class="icon-feather"></i> {{ article.locale_date }}
   {% if article.update %} &nbsp; <i class="icon-spin4"></i> {{ article.update }} {% endif %}
-<i class="icon-bookmarks"></i>
+<i class="icon-bookmarks"></i> <a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a> [
 {% for tag in article.tags %}
-<span><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> / </span>
+<span><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></span>
 {% endfor %}
-</h5>
+]</h5>
+
+{% if article.metadata.parts_articles %}
+    <p>Все части цыкла:</p>
+    <ol class="parts">
+        {% for part_article in article.metadata.parts_articles %}
+            <li {% if part_article == article %}class="active"{% endif %}>
+                <a href='{{ SITEURL }}/{{ part_article.url }}'>{{ part_article.title }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+{% endif %}
 
 {{ article.content }}
 
-<p align="center"><a href="#">on the top</a></p>
+{% if article.metadata.parts_articles %}
+    <p>Все части цыкла:</p>
+    <ol class="parts">
+        {% for part_article in article.metadata.parts_articles %}
+            <li {% if part_article == article %}class="active"{% endif %}>
+                <a href='{{ SITEURL }}/{{ part_article.url }}'>{{ part_article.title }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+{% endif %}
+
+<p align="center"><a href="#">в начало</a></p>
 {% if DISQUS_SITENAME %}{% include '_includes/disqus.html' %}{% endif %}
 {% endblock %}
