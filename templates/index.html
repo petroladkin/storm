@@ -3,9 +3,22 @@
 {% block content %}
 {% if articles %}
 {% for article in articles_page.object_list %}
-<h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-<h5><i class="icon-feather"></i> {{ article.locale_date }} {% if article.update %} &nbsp; <i class="icon-spin4"></i> {{ article.update }} {% endif %} &nbsp; &nbsp; <i class="icon-bookmarks"></i> <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a> </h5>
-{{ article.summary|striptags }}
+<div class="pela_top_block">
+  <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+  <div>
+{% if article.image %}
+    <div class="pela_left_image_top_block">
+      <div class="pela_image_block" style="background-image: url({{ SITEURL }}/{{ article.image }});"></div>
+    </div>
+    <div class="pela_left_header_block">
+{% else %}
+    <div>
+{% endif %}
+      <h5><i class="icon-feather"></i> {{ article.locale_date }} {% if article.update %} &nbsp; <i class="icon-spin4"></i> {{ article.update }} {% endif %} &nbsp; &nbsp; <i class="icon-bookmarks"></i> <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a> </h5>
+      {{ article.summary|striptags }}
+    </div>
+  </div>
+</div>
 {% endfor %}
 {% endif %}
 {% include "_includes/pagination.html" %}

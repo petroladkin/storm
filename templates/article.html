@@ -5,37 +5,60 @@
                                                       }}">{% endblock %}
 {% block author %}<meta name="author" content="{{ article.author  }}">{%endblock%}
 {% block content %}
-<h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-<h5><i class="icon-feather"></i> {{ article.locale_date }}
-  {% if article.update %} &nbsp; <i class="icon-spin4"></i> {{ article.update }} {% endif %}
-<i class="icon-bookmarks"></i> <a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a> [
-{% for tag in article.tags %}
-<span><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></span>
-{% endfor %}
-]</h5>
+
+<div class="pela_top_block">
+
+  <div>
+{% if article.image %}
+    <div class="pela_right_image_top_block">
+      <div class="pela_image_block" style="background-image: url({{ SITEURL }}/{{ article.image }});"></div>
+    </div>
+    <div class="pela_right_header_block">
+{% else %}
+    <div>
+{% endif %}
+      <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+      <h5><i class="icon-feather"></i> {{ article.locale_date }}
+      {% if article.update %} &nbsp; <i class="icon-spin4"></i> {{ article.update }} {% endif %}
+        <i class="icon-bookmarks"></i> <a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a>
+        {% if article.tags %}
+        [
+        {% for tag in article.tags %}
+          <span><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></span>
+        {% endfor %}
+        ]
+      {% endif %}
+      </h5>
+    </div>
+  </div>
+</div>
 
 {% if article.metadata.parts_articles %}
-    <p>Все части цыкла:</p>
-    <ol class="parts">
+    <p>Все части цикла:</p>
+    <p> <ol class="parts">
         {% for part_article in article.metadata.parts_articles %}
             <li {% if part_article == article %}class="active"{% endif %}>
                 <a href='{{ SITEURL }}/{{ part_article.url }}'>{{ part_article.title }}</a>
             </li>
         {% endfor %}
-    </ol>
+    </ol></p>
+    <hr>
+    <p>&nbsp;</p>
 {% endif %}
 
 {{ article.content }}
 
 {% if article.metadata.parts_articles %}
-    <p>Все части цыкла:</p>
-    <ol class="parts">
+    <p>&nbsp;</p>
+    <hr>
+    <p>Все части цикла:</p>
+    <p> <ol class="parts">
         {% for part_article in article.metadata.parts_articles %}
             <li {% if part_article == article %}class="active"{% endif %}>
                 <a href='{{ SITEURL }}/{{ part_article.url }}'>{{ part_article.title }}</a>
             </li>
         {% endfor %}
-    </ol>
+    </ol></p>
 {% endif %}
 
 <p align="center"><a href="#">в начало</a></p>
