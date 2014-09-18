@@ -1,0 +1,34 @@
+.pela_top_block {
+	margin-bottom: 30px;
+}
+
+.pela_left_image_top_block {
+	float: left;
+	margin-right: 20px;
+	width: 122px;
+	height: 92px;
+}
+
+.pela_right_image_top_block {
+	float: right;
+	margin-left: 20px;
+	width: 122px;
+	height: 92px;
+}
+
+.pela_image_block {
+	 height: 90px;
+	 width: 120px;
+	 border: 1px solid #DFDFDF;
+	 border-radius: 3px;
+}
+
+.pela_left_header_block {
+	margin-left: 140px;
+	min-height: 100px;
+}
+
+.pela_right_header_block {
+	margin-right: 140px;
+	min-height: 100px;
+}
