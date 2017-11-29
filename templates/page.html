@@ -12,7 +12,10 @@
         	<div class="pela_projects_top">
   				<div class="pela_projects_language_image" style="background-image: url({{ SITEURL }}/theme/img/{{ project.language }}.png);"></div>
   				<div class="pela_projects_title"><a href="{{ project.github_url }}"> {{ project.name }} </a></div>
-			</div>
+<!--   				{% if project.fork %}
+  					<div class="pela_projects_forked">forked from </div>
+				{% endif %}
+ -->			</div>
 			<div class="pela_projects_description">
 		        <p> {{ project.description }} </p>
 	    	</div>
