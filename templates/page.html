@@ -5,7 +5,23 @@
 <h2><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h2>
 {{ page.content }}
 
+
+{% if page.slug == 'public-projects' %}
+	{% if GITHUB_USER %}
+	    {% for project in github_projects %}
+        	<div class="pela_projects_top">
+  				<div class="pela_projects_language_image" style="background-image: url({{ SITEURL }}/theme/img/{{ project.language }}.png);"></div>
+  				<div class="pela_projects_title"><a href="{{ project.github_url }}"> {{ project.name }} </a></div>
+			</div>
+			<div class="pela_projects_description">
+		        <p> {{ project.description }} </p>
+	    	</div>
+ 		{% endfor %}
+	{% endif %}
+{% endif %}
+
 {% if PDF_PROCESSOR %}
 <h5><a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">get the pdf</a></h5>
 {% endif %}
 {% endblock %}
+

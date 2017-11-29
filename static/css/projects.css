@@ -1,0 +1,23 @@
+
+.pela_projects_top {
+	margin-top: 40px; 
+	height: 48px;
+}
+
+.pela_projects_language_image {
+	float: left;
+	height: 24px;
+	width: 24px;
+	background-size: 24px 24px;
+}
+
+.pela_projects_title {
+	margin-left: 40px;
+	color: #14507B;
+	font-size: 1.5em;
+}
+
+.pela_projects_description {
+	padding-bottom: 6px;
+	background: url(../img/dotted-border.png) bottom left repeat-x;
+}
